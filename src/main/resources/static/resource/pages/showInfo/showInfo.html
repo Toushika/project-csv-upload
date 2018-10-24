@@ -1,0 +1,64 @@
+<h3>View All Info</h3>
+<div ng-init="viewAllInfo()">
+    <table class="table table-bordered">
+        <tr>
+            <th>Sl.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </tr>
+
+        <tr ng-repeat="viewInfo in viewAllInfo ">
+            <td>{{$index+1}}</td>
+            <td>{{viewInfo.name}}</td>
+            <td>{{viewInfo.email}}</td>
+            <td>{{viewInfo.phone}}</td>
+            <td>
+                <img src="resource/img/edit.png" ng-model="editInfo" ng-click="editInfo(viewInfo)">
+            </td>
+
+            <td>
+                <img src="resource/img/delete.png" ng-model="deleteInfo" ng-click="deleteInfo(viewInfo.rowId);">
+            </td>
+
+        </tr>
+
+
+    </table>
+
+</div>
+
+
+<div ng-show="IsVisible" id="dialog" title="Info Details">
+    <form>
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="editRowId" name="editRowId" ng-model="editInfoDetails.rowId"
+                   ng-value="editInfoDetails.rowId">
+        </div>
+
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" id="editName" name="editName" ng-model="editInfoDetails.name"
+                   ng-value="editInfoDetails.name">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" id="editEmail" name="editEmail" ng-model="editInfoDetails.email"
+                   ng-value="editInfoDetails.email">
+        </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" id="editPhone" name="editPhone" ng-model="editInfoDetails.phone"
+                   ng-value="editInfoDetails.phone">
+        </div>
+
+        <input type="button" class="btn btn-primary" name="editInfoSubmit" id="editInfoSubmit" value="submit"
+               ng-click="editAllInfo(editInfoDetails)">
+
+    </form>
+</div>
